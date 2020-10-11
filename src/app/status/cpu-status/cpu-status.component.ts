@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CPUUsage } from 'electron';
+import { ElectronService } from '../../core/services/electron/electron.service';
 
 @Component({
   selector: 'app-cpu-status',
@@ -9,7 +10,11 @@ import { CPUUsage } from 'electron';
 export class CpuStatusComponent implements OnInit {
   cpuRate = 0;
 
-  constructor() {}
+  constructor(private electronService: ElectronService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const remote = this.electronService.remote;
+    const cpuUsage: CPUUsage = remote.process.getCPUUsage();
+    this.cpuRate = cpuUsage.percentCPUUsage;
+  }
 }
