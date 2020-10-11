@@ -13,8 +13,14 @@ export class CpuStatusComponent implements OnInit {
   constructor(private electronService: ElectronService) {}
 
   ngOnInit(): void {
-    const remote = this.electronService.remote;
-    const cpuUsage: CPUUsage = remote.process.getCPUUsage();
-    this.cpuRate = cpuUsage.percentCPUUsage;
+    this.loadData();
+  }
+
+  loadData() {
+    if (this.electronService.isElectron) {
+      const remote = this.electronService.remote;
+      const cpuUsage: CPUUsage = remote.process.getCPUUsage();
+      this.cpuRate = cpuUsage.percentCPUUsage;
+    }
   }
 }
