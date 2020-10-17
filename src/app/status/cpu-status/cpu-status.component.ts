@@ -1,20 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { CPUUsage } from 'electron';
-import { ElectronService } from '../../core/services/electron/electron.service';
+import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
 
 @Component({
   selector: 'app-cpu-status',
   templateUrl: './cpu-status.component.html',
   styleUrls: ['./cpu-status.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CpuStatusComponent implements OnInit {
-  cpuRate = 0;
+  @Input() cpuRate = 0;
 
-  constructor(private electronService: ElectronService) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    const remote = this.electronService.remote;
-    const cpuUsage: CPUUsage = remote.process.getCPUUsage();
-    this.cpuRate = cpuUsage.percentCPUUsage;
-  }
+  ngOnInit(): void {}
 }
