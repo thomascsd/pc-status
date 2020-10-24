@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   cpuRate = 0;
   total = 0;
   free = 0;
+  process = 0;
 
   constructor(private router: Router, private electronService: ElectronService) {}
 
@@ -26,6 +27,7 @@ export class HomeComponent implements OnInit {
         this.cpuRate = Math.round(cpuUsage.percentCPUUsage * 100);
         this.total = Math.round(sysRam.total / 1024);
         this.free = Math.round(sysRam.free / 1024);
+        this.process = Math.round(processRam.private / 1024);
       }, 1000);
     }
   }

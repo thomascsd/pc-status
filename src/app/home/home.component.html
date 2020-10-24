@@ -1,7 +1,8 @@
-<div class="flex flex-column items-center pattern-diagonal-lines-md yellow-dark h-1by1">
+<div class="flex flex-column items-center pattern-diagonal-lines-md pink-lighter h-1by1">
   <h1 class="self-center gray-darker p-1">PC Status</h1>
-  <section class="flex flex-row justify-between gray-darker w-30pc pt-5">
-    <app-cpu-status class="" [cpuRate]="cpuRate"></app-cpu-status>
-    <app-ram-status class="" [total]="total" [free]="free"></app-ram-status>
+  <section class="flex flex-row justify-between gray-darker w-50vw pt-5">
+    <app-cpu-status [cpuRate]="cpuRate"></app-cpu-status>
+    <app-ram-status [total]="total" [free]="free" [process]="process"></app-ram-status>
   </section>
+  <div class="pattern-dots-sm slategray h-2"></div>
 </div>

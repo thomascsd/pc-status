@@ -9,6 +9,7 @@ import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core
 export class RamStatusComponent implements OnInit {
   @Input() total = 0;
   @Input() free = 0;
+  @Input() process = 0;
 
   constructor() {}
 
